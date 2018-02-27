@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "FirstViewController.h"
+#import "LFCoverNavigationBar.h"
+#import "LFCoverNavigationController.h"
+#import "UINavigationItem+AttributeExt.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +20,20 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+
+    LFCoverNavigationController *nav = [[LFCoverNavigationController alloc]initWithNavigationBarClass:[LFCoverNavigationBar class] toolbarClass:nil];
+    [nav setViewControllers:@[[FirstViewController new]]];
+    self.window.rootViewController = nav;
+    [self.window makeKeyWindow];
+    UINavigationItem *item = [UINavigationItem appearance];
+    item.backImage = [UIImage imageNamed:@"iconBackDark"];
+
+
+
+
     return YES;
 }
 
